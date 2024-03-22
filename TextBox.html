@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="TextBox.css">
+  <title>Text Box</title>
+</head>
+
+<body>
+  <h1 class="heading" align="center">TEXT BOX</h1>
+  <br>
+  <div class="container">
+    <form class="textBoxForm">
+      <label>Enter your text below</label>
+      <br><br>
+      <textarea id="text" rows="10" cols="70" onkeyup="updateInfo()" autofocus></textarea><br><br>
+
+      <button type="button" onclick="transformUpperCase()">UPPERCASE</button>
+      <button type="button" onclick="transformLowerCase()">LOWERCASE</button>
+      <button type="button" onclick="findText()">FIND</button>
+      <button type="button" onclick="changeWeight()">WEIGHT</button>
+      <button type="button" onclick="textUnderline()">UNDERLINE</button>
+      <button type="button" onclick="changeUnderline()">CHANGE UNDERLINE</button>
+      <button type="button" onclick="removeUnderline()">REMOVE UNDERLINE</button>
+      <button type="button" onclick="changeColor()">COLOR</button>
+      <button type="button" onclick="addText()">ADD TEXT</button>
+      <br><br>
+      <h2 id="textInfo">This text contains 0 words and 0 characters</h2>
+    </form>
+  </div>
+
+  <script>
+
+    let text = document.getElementById("text");
+    let textInfo = document.getElementById('textInfo')
+    let clr;
+
+    function transformUpperCase() {
+      text.value = text.value.toUpperCase();
+    }
+
+    function transformLowerCase() {
+      text.value = text.value.toLowerCase();
+    }
+
+    function changeWeight() {
+      let takeWeight = prompt(("Enter the weight : ").toLowerCase());
+      text.style.fontSize = takeWeight.value;
+    }
+
+    function updateInfo() {
+      let numberOfWords = text.value.trim.split(" ").length;
+
+      textInfo.innerHTML = `This text contains ${numberOfWords} words and ${text.value.length} characters`;
+    }
+
+    function changeColor() {
+      clr = prompt(("Enter your fav color : ").toLowerCase());
+      text.style.color = clr;
+    }
+
+    function findText() {
+      let searchText = prompt("Enter the text : ").toLowerCase();
+      if (text.value.includes(searchText)) {
+        alert(`search text "${searchText}" is present`);
+      } else {
+        alert(`Search text "${searchText}" is not present`);
+      }
+    }
+
+    function textUnderline() {
+      text.style.textDecoration = `underline 2px solid ${clr}`;
+    }
+
+    function changeUnderline() {
+      let changeType = prompt("Enter underline style you wants to apply : ");
+      let color = prompt("Enter color you wants to change : ");
+      text.style.textDecoration = `${changeType} underline 2px solid ${color}`;
+    }
+
+    function addText() {
+      let add = prompt("Enter text you wants to add :");
+      text.value = text.value + ` ${add}`;
+    }
+
+    function removeUnderline() {
+      text.style.textDecoration = `none`;
+    }
+
+  </script>
+
+  <!-- <h1 id="heading" align="center">TEXT BOX</h1>
+  <br>
+  <div class="container" align="center">
+    <form id="text" class="textBoxForm">
+      <label>Enter your text below</label><br><br>
+      <textarea id="text" rows="10" cols="50" style="border-radius: 8px;" autofocus name="text"
+        placeholder="enter something here"></textarea><br><br>
+      <button type="button" onclick="transformUpperCase()">uppercase</button>
+      <button type="button" onclick="transformLowerCase()">lowercase</button>
+      <button type="button" onclick="searchText()">search</button>
+      <button type="button" onclick="textUnderline()">underline</button>
+
+      <script>
+
+        let text = document.getElementById("text");
+
+        function transformUpperCase() {
+          text.value = text.value.toUpperCase();
+        }
+
+        function transformLowerCase() {
+          text.value = text.value.toLowerCase();
+        }
+
+
+      </script> -->
+
+  </form>
+  </div>
+
+  <script>
+
+
+  </script>
+</body>
+
+</html>
